@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
   experimental: {
-    serverActions: { allowedOrigins: ['*'] }
-  }
+    appDir: true,
+  },
+  output: 'standalone',
 };
+
 module.exports = nextConfig;
