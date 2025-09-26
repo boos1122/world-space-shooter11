@@ -1,5 +1,5 @@
-import GameCanvas from "@/src/components/GameCanvas";
-import Hud from "@/src/components/Hud";
+import GameCanvas from "@/components/GameCanvas";
+import Hud from "@/components/Hud";
 
 export default function HomePage() {
   return (

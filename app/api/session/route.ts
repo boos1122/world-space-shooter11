@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/src/lib/supabase';
+import { supabase } from '@/lib/supabase';
 
 // TODO: 完整实现 World ID 验证和会话交换
 export async function POST(request: NextRequest) {

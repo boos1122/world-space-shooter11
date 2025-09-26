@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { createGame } from '@/src/game';
+import { createGame } from '@/game';
 
 export default function GameCanvas() {
   const ref = useRef<HTMLDivElement>(null);
