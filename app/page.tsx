@@ -1,11 +1,9 @@
-export default function Page() {
+export default function Home() {
   return (
-    <main style={{padding:'2rem',textAlign:'center'}}>
-      <h1>🚀 Space Shooter</h1>
-      <p>欢迎来到 World Mini App！</p>
-      <a href="/game" style={{display:'block',margin:'1rem',padding:'1rem',background:'#0070f3',color:'#fff',borderRadius:'8px'}}>
-        开始游戏
-      </a>
+    <main style={{padding:'2rem', textAlign:'center'}}>
+      <h1>🚀 World Mini App</h1>
+      <p>Welcome! 游戏已成功部署 🎮</p>
+      <a href="/game">进入游戏</a>
     </main>
   );
 }
