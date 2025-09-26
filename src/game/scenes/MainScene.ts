@@ -6,10 +6,14 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
-    this.add.text(160, 200, "🚀 World Mini App - Space Shooter", {
+    // 游戏标题文字
+    this.add.text(100, 100, "🚀 Space Shooter 正式版", {
       fontSize: "24px",
       color: "#ffffff",
     });
-    this.add.image(400, 300, "logo");
+
+    // 示例 Logo 图片（需要在 preload 里加载过 "logo"）
+    this.add.image(200, 200, "logo");
   }
-}
+}	
+
