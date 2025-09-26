@@ -1,26 +1,37 @@
 'use client';
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 import { useEffect } from 'react';
-import Phaser from 'phaser';
 
 export default function GamePage() {
   useEffect(() => {
-    const config: Phaser.Types.Core.GameConfig = {
-      type: Phaser.AUTO,
-      parent: 'game-container',
-      width: 800,
-      height: 600,
-      scene: {
-        preload: function (this: Phaser.Scene) {
-          this.load.image('logo', '/assets/logo.png');
-        },
-        create: function (this: Phaser.Scene) {
-          this.add.image(400, 300, 'logo');
-        },
-      },
-    };
+    let game: import('phaser').Game | undefined;
 
-    const game = new Phaser.Game(config);
-    return () => game.destroy(true);
+    (async () => {
+      const Phaser = (await import('phaser')).default;
+
+      const config: Phaser.Types.Core.GameConfig = {
+        type: Phaser.AUTO,
+        parent: 'game-container',
+        width: 800,
+        height: 600,
+        scene: {
+          preload: function (this: Phaser.Scene) {
+            this.load.image('logo', '/assets/logo.png');
+          },
+          create: function (this: Phaser.Scene) {
+            this.add.image(400, 300, 'logo');
+          },
+        },
+      };
+
+      game = new Phaser.Game(config);
+    })();
+
+    return () => {
+      if (game) game.destroy(true);
+    };
   }, []);
 
   return <div id="game-container" style={{ width: '100vw', height: '100vh' }} />;
