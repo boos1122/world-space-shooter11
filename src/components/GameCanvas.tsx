@@ -1,23 +1,16 @@
-'use client';
-import { useEffect, useRef } from 'react';
-import { createGame } from '@/game';
+"use client";
+import { useEffect } from "react";
 
 export default function GameCanvas() {
-  const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    if (!ref.current) return;
-    
-    // 确保只初始化一次
-    if (ref.current.children.length > 0) return;
-
-    const game = createGame(ref.current.id);
-
-    return () => {
-      // 组件卸载时销毁游戏实例，释放资源
-      game.destroy(true);
-    };
+    if (typeof window === "undefined") return;
+    import("@/game/index").catch(console.error);
   }, []);
 
-  return <div id="phaser-root" ref={ref} className="w-full h-[800px]" />;
+  return (
+    <div
+      id="phaser-root"
+      style={{ width: "100%", height: "100vh" }}
+    />
+  );
 }

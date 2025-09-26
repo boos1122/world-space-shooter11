@@ -1,25 +1,23 @@
-import * as Phaser from 'phaser';
-import { BootScene } from './scenes/BootScene';
-import { PreloadScene } from './scenes/PreloadScene';
-import { MainScene } from './scenes/MainScene';
+import Phaser from "phaser";
+import PreloadScene from "./scenes/PreloadScene";
+import MainScene from "./scenes/MainScene";
 
-export function createGame(parent: string) {
-  return new Phaser.Game({
-    type: Phaser.AUTO,
-    parent,
-    backgroundColor: '#000',
-    scale: {
-      mode: Phaser.Scale.FIT,
-      autoCenter: Phaser.Scale.CENTER_BOTH,
-      width: 480,
-      height: 800,
+const config: Phaser.Types.Core.GameConfig = {
+  type: Phaser.AUTO,
+  width: 800,
+  height: 600,
+  parent: "phaser-root",   // 👈 绑定到前端 div
+  backgroundColor: "#000000",
+  physics: {
+    default: "arcade",
+    arcade: {
+      debug: false,
     },
-    physics: {
-      default: 'arcade',
-      arcade: {
-        debug: process.env.NODE_ENV === 'development', // 开发时开启debug
-      },
-    },
-    scene: [BootScene, PreloadScene, MainScene],
-  });
+  },
+  scene: [PreloadScene, MainScene],
+};
+
+// 只有在浏览器环境才运行游戏
+if (typeof window !== "undefined") {
+  new Phaser.Game(config);
 }
