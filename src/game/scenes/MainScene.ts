@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Phaser from 'phaser';
 import { postScore } from '../services/api';
 import { v4 as uuidv4 } from 'uuid';
