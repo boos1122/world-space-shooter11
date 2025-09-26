@@ -1,22 +1,14 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "World Mini App – Space Shooter",
-  description: "A 2D space shooter game built with Next.js and Phaser 3, integrated with World ID.",
+export const metadata = {
+  title: 'World Space Shooter',
+  description: 'Phaser + Next.js mini app',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="zh">
+      <body style={{margin:0,background:'#000',color:'#fff',minHeight:'100vh'}}>
+        {children}
+      </body>
     </html>
   );
 }
